@@ -8,10 +8,10 @@
 
 float mag(std::vector<std::vector<float>> vect, int r){
     
-    float i = vect[r][0];
+    float k = vect[r][0];
     float j = vect[r][1];
 
-    float sum = sqrt(i*i + (j*j));
+    float sum = sqrt(k*k + (j*j));
     return sum;
 }
  
@@ -68,10 +68,15 @@ vecofvecs.push_back(points);
 std::cout << "sanity check for random float in vecofvecs:" << vecofvecs[6][1] <<std::endl; 
 
 // Now, have defined a vector we can call that includes all of the data!! Want to clear the cycling of MyInput so as to read and print the rows.   
-
+std::vector<float> magnitudes;
 for(int i =0; i <= 25; i++){
-    std::cout << mag(vecofvecs, i) << std::endl;
- 
+    if(i <= 24){
+   magnitudes.push_back(mag(vecofvecs, i));
+   std::cout <<"Entry number " << i+1 << " is "<< magnitudes[i] <<"."<<std::endl;}
+   // outstream object here to write to new string file.
+ else{
+    std::cout << "Vector of magnitudes succesfully created."<< std::endl; 
+ }
 }
 }
 
