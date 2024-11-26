@@ -5,15 +5,16 @@
 #include <fstream>
 #include<cstdlib>
 #include <sstream>
+#include"CustomFunctions.h"
 
-float mag(std::vector<std::vector<float>> vect, int r){
+//float mag(std::vector<std::vector<float>> vect, int r){
     
-    float k = vect[r][0];
-    float j = vect[r][1];
+  //  float k = vect[r][0];
+   // float j = vect[r][1];
 
-    float sum = sqrt(k*k + (j*j));
-    return sum;
-}
+   // float sum = sqrt(k*k + (j*j));
+   // return sum;
+//}
  
 
 int main (){
@@ -33,7 +34,7 @@ if(MyInput.fail()){
 return -1; }
 // what I want to do, is extract all the lines of the file without knowing the no. of rows, and then split each column inti x and y i.e. separate vectors
 else{cout<< "File has been successfully opened."<<endl;
-}
+};
 
 std::vector<string> rows;
 std::vector<int> data;
@@ -80,4 +81,4 @@ for(int i =0; i <= 25; i++){
 }
 }
 
-//for (int i=1; i<=25; i++){std::cout << "line " << i << " contains the string " << rows[i] << "." << std::endl;}
+//for (int i=1; i<=25; i++){std::cout << "line " << i << " contains the string " << rows[i] << "." << std::endl;}/workspaces/SUPA_CPP_Labs/Exercises2024/Ex1_2/input2D_float.txt
