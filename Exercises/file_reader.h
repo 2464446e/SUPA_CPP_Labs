@@ -35,4 +35,7 @@ vector<vector<float>> read(){
                     float float_point = std::stod(string_point);
                     points.push_back(float_point);}
                     vecofvecs.push_back(points);};
-                    return vecofvecs;}
+                    if(filename == "/workspaces/SUPA_CPP_Labs/Exercises2024/Ex1_2/input2D_float.txt" ){std::cout<< "The equation of the line is given by y = "<< plot(vecofvecs,24)[0] <<"x + "<< plot(vecofvecs,24)[1]<< std::endl;}
+                    return vecofvecs;
+
+}

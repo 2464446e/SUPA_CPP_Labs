@@ -10,12 +10,10 @@
 int main(){
 
 vector<vector<float>>values = read();
-Loading(values);
+//Loading(values);
 vector<vector<float>> errors = read();
-Loading(errors);
-
-cout << 5 <<endl;
-
-
-
+//Loading(errors);
+cout << "Chi squared value for the plot: "<< chi(values, errors) << endl;
+for(int i=0; i<=24; ++i){
+cout << "value of x^y for line " << i +1 <<" is " << xtoy(values)[i]<<". "<<endl;}
 }
