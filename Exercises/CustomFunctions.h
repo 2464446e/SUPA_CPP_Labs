@@ -22,7 +22,7 @@ float mag(std::vector<std::vector<float>> vect, int r){
 // each column inti x and y i.e. separate vectors.
 
 int Loading(std::vector<vector<float>> vecofvecs){
-    std::cout<< "The equation of the line is given by y = "<< plot(vecofvecs,24)[0] <<"x + "<< plot(vecofvecs,24)[1]<< std::endl;
+    //std::cout<< "The equation of the line is given by y = "<< plot(vecofvecs,24)[0] <<"x + "<< plot(vecofvecs,24)[1]<< std::endl;
     std::cout <<"Now, select an action to perform on the data: print or magnitude?"<<std::endl;
     string command;
     std::cin >> command;

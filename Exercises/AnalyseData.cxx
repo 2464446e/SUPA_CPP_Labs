@@ -1,3 +1,5 @@
+
+
 #include <iostream>
 #include <cmath>
 #include <vector>
@@ -7,78 +9,47 @@
 #include <sstream>
 #include"CustomFunctions.h"
 
-//float mag(std::vector<std::vector<float>> vect, int r){
-    
-  //  float k = vect[r][0];
-   // float j = vect[r][1];
+int main(){
+vector<vector<float>>values = read();
+vector<vector<float>> errors = read();
+cout << "Which function would you like to perform?"<< endl;
+cout << "1) Obtain and save the equation of the line,"<< endl;
+cout << "2) Obtain and save the Chi squared of the fit, or" << endl;
+cout << "3) Obtain and save the x^y for each datapoint?,"<< endl;
+string option;
+cin >> option;
+int choice = std::stoi(option);
+switch (choice){
 
-   // float sum = sqrt(k*k + (j*j));
-   // return sum;
-//}
- 
-
-int main (){
-    using namespace std;
-
-
-std::cout << "write file path here:"<<std::endl;
-string name;
-std::cin >> name;
-string filename = name;
-std::cout << "You have chosen to access the following directory: "<< filename <<". "<<std::endl;
-
-std::ifstream MyInput;
-MyInput.open(filename);
-if(MyInput.fail()){
-    std::cout<< "failure"<<std::endl;
-return -1; }
-// what I want to do, is extract all the lines of the file without knowing the no. of rows, and then split each column inti x and y i.e. separate vectors
-else{cout<< "File has been successfully opened."<<endl;
-};
-
-std::vector<string> rows;
-std::vector<int> data;
-std::string line;
-int n = 25;
-string x;
-//for (int i =1; i <= 26; i++){
- // MyInput >> x;
-  // cout <<" " << x << "; "<<endl;
-   //rows.push_back(x);
-  // }
-std::vector<std::vector<float>> vecofvecs;
-
-bool fstline = true;
-while(std::getline(MyInput, line)){
-    if(fstline == true){
-        fstline =false;
-         continue;}
-    std::vector<float> points;
-    std::stringstream ss(line);
-    std::string string_point;
-
-    while(std::getline(ss, string_point, ',' )){
-        std::cout << string_point << std::endl;
-        float float_point = std::stod(string_point);
-        points.push_back(float_point);}
-vecofvecs.push_back(points);
-
-}
-
-// checking that the vectos has been correctly assigned. 
-std::cout << "sanity check for random float in vecofvecs:" << vecofvecs[6][1] <<std::endl; 
-
-// Now, have defined a vector we can call that includes all of the data!! Want to clear the cycling of MyInput so as to read and print the rows.   
-std::vector<float> magnitudes;
-for(int i =0; i <= 25; i++){
-    if(i <= 24){
-   magnitudes.push_back(mag(vecofvecs, i));
-   std::cout <<"Entry number " << i+1 << " is "<< magnitudes[i] <<"."<<std::endl;}
-   // outstream object here to write to new string file.
- else{
-    std::cout << "Vector of magnitudes succesfully created."<< std::endl; 
- }
+case 1:{
+        ofstream f;
+        f.open("line_eq.txt");
+        if (f.good()){
+            f<< "The equation of the line is given by"<<endl;
+            f<< "y="<<plot(values,24)[0] <<"x + "<< plot(values,24)[1]<< std::endl;};
+        f.close(); 
+        cout<< "The equation of the line is given by y = "<< plot(values,24)[0] <<"x + "<< plot(values,24)[1]<< std::endl;
+        break;}
+case 2:{
+    fstream f;
+    f.open("ch_sq.txt");
+    if (f.good()){
+            f<< "The equation of the line is given by"<<endl;
+            f<< "y="<<plot(values,24)[0] <<"x + "<< plot(values,24)[1]<< std::endl;};
+            f.close();
+    cout << "Chi squared value for the plot: "<< chi(values, errors) << endl;
+    break;}
+case 3:{
+    ofstream f;
+    f.open("xtoy.txt");
+    if (f.good()){
+            f<< "values of x^y for each consecutive row:"<<endl;
+            for(int j = 0; j<=24; ++j ){
+            f<< xtoy(values)[j] << endl;
+            cout << "value of x^y for line " << j+1 <<" is " << xtoy(values)[j]<<". "<<endl;};
+            f.close();}
+            break;}
+default:{
+cout << "Reload this file and try again!!"<<endl;}
 }
 }
-
-//for (int i=1; i<=25; i++){std::cout << "line " << i << " contains the string " << rows[i] << "." << std::endl;}/workspaces/SUPA_CPP_Labs/Exercises2024/Ex1_2/input2D_float.txt
