@@ -1,4 +1,5 @@
 #include <iostream>
+#include <fstream>
 #include <string>
 #include <vector>
 #include "FiniteFunctions.h"
@@ -7,6 +8,7 @@
 #include "gnuplot-iostream.h" //Needed to produce plots (not part of the course) 
 
 using std::filesystem::path;
+
 
 //Empty constructor
 FiniteFunction::FiniteFunction(){
@@ -63,14 +65,7 @@ Integration by hand (output needed to normalise function when plotting)
 */ 
 double FiniteFunction::integrate(int Ndiv){ //private
   //ToDo write an integrator
-  //return -99;  
-  double div_size = (m_RMax - m_RMin)/Ndiv;
-  double norm;
-  for(int i =0; i <=Ndiv; ++i){
-  double step = this->callFunction(m_RMin + i*div_size);
-  norm += step*(div_size);
-  }
-  return norm;
+  return -99;  
 }
 double FiniteFunction::integral(int Ndiv) { //public
   if (Ndiv <= 0){
