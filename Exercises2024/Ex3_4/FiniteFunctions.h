@@ -46,4 +46,6 @@ protected:
   
 private:
   double invxsquared(double x); //The default functional form
+ 
+
 };
