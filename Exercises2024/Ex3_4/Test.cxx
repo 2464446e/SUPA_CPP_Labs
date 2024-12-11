@@ -9,7 +9,7 @@
 #include <sstream>
 #pragma once
 #include "gnuplot-iostream.h"
-
+using namespace std;
 
 //Now, we wish to create some inheritence classes for myfunction which set new values for the function i.e.
 double func1(double x, double sig, double nu){
@@ -33,9 +33,20 @@ else{ return  A*pow(B-((x-xm)/sig), -n);
 }
 }
 
-class Test: public FiniteFunction{public:
+class Test1: public FiniteFunction{public:
 using FiniteFunction::FiniteFunction;
-double callFunction(double x) {return func3(x, 50,6,29,3);}};
+double callFunction(double x) {
+    return func1(x,1.5,0.05);}};
+class Test2: public FiniteFunction{public:
+using FiniteFunction::FiniteFunction;
+double callFunction(double x) {
+    return func2(x, 1.75,0.05);}};
+// This ^^ function is likely the most accurate fit to this data. 
+class Test3: public FiniteFunction{public:
+using FiniteFunction::FiniteFunction;
+double callFunction(double x) {
+    return func3(x, 50,30,29,50);}};
+
 
 //Test::Test(){
   //m_RMin = -5.0;
@@ -74,7 +85,7 @@ std::cout << mystvec[2] << std::endl;
 // creating an instance of FiniteFunction with initialised constructors -5, 5 and a file name.
 // Then, from the class, calling a function which plots a particular function based on random data.
 //here, this is the default function. 
-Test myfunction(-10, 10, "SecondFunction");
+Test2 myfunction(-10, 10, "SecondFunction");
 myfunction.plotFunction();
 myfunction.printInfo();
 //plotdata takes mystertdata x values, assigns them to one of n bins (specidied by the Nbins object), and
